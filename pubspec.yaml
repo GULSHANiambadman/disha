@@ -9,15 +9,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
-  # Supabase package
-  supabase_flutter: ^2.5.1 
 
-  # --- Other packages ---
-  google_maps_flutter: ^2.7.0
-  geolocator: ^12.0.0
-  permission_handler: ^11.3.1
-  
+  # --- Supabase ---
+  supabase_flutter: ^2.5.1 # Main Supabase package for auth and database
+
+  # --- Mapping (OpenStreetMap) ---
+  flutter_map: ^7.0.1 # Main map widget
+  latlong2: ^0.9.1 # Helper for map coordinates (LatLng)
+  flutter_map_cancellable_tile_provider: ^3.0.2 # Fixes map performance on web
+
+  # --- Location Services ---
+  geolocator: ^12.0.0 # For getting the device's GPS location
+  permission_handler: ^11.3.1 # For requesting location permissions
+
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
@@ -25,5 +29,23 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^4.0.0
 
+  # --- Icon Generator ---
+  flutter_launcher_icons: ^0.13.1 # Package to create the app icon
+
 flutter:
   uses-material-design: true
+
+  # --- Asset Registration ---
+  # This tells Flutter where to find your icon file
+  assets:
+    - assets/
+
+# --- Icon Generator Configuration ---
+# This tells the icon package where your icon is
+flutter_launcher_icons:
+  android: true
+  ios: true
+  web:
+    generate: true # <-- This line is now fixed
+  image_path: "assets/icon.png" # <-- IMPORTANT: Change this if your icon has a different name
+
